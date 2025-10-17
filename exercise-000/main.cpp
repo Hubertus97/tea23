@@ -3,6 +3,19 @@
 
 #include "config.h"
 
+int y = 5;
+void changeValueByParameter(int value){
+    value = 99;
+    fmt::println("Wert von y am Ende innerhalb der Funktion: {}",y);
+    fmt::println("Wert von value am Ende innerhalb der Funktion: {}",value);
+};
+
+void ChangeValueByPointer(int* pointer){
+    *pointer = 77;
+    fmt::println("Wert von Pointer:{}",y);
+    fmt::println("Wert von Pointer:{}",*pointer);
+};
+
 int main(int argc, char **argv) {
 
     /**
@@ -26,6 +39,30 @@ int main(int argc, char **argv) {
     fmt::println("Wert auf den Zeiger p zeigt:{}",*p);
 
     fmt::println("Adresse die in p gespeichert ist:{}",fmt::ptr(p));
+    
+    *p = 42;
+
+    fmt::println("Wert von x:{}",x);
+
+    fmt::println("Wert auf den p zeigt:{}",*p);
+
+
+    fmt::println("------Aufgabe2------");
+
+    double* ZeigerAufDouble = new double(3.1415);
+    fmt::println("Wert von ZeigerAufDouble:{}, Adresse im Heap von dem Double Wert 3.1415:{}",*ZeigerAufDouble,fmt::ptr(ZeigerAufDouble));
+    fmt::println("Adresse an dem der Pointer gespeichert ist der auf die Adresse des Double Werts zeigt:{}",fmt::ptr(&ZeigerAufDouble));
+    delete ZeigerAufDouble;
+
+    fmt::println("------Aufgabe3------");
+
+    fmt::println("Wert von y vor Funktion:{}",y);
+    changeValueByParameter(y);
+    fmt::println("Wert von y nach der Funktion:{}",y);
+
+    fmt::println("Wert von y vor Pointer Funktion:{}",y);
+    ChangeValueByPointer(&y);
+    fmt::println("Wert von y nach Pointer Funktion:{}",y);
 
     return 0; /* exit gracefully*/
 }
