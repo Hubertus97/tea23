@@ -18,6 +18,9 @@ void WertUndAdresseVonVar(const int& Variable){
         fmt::println("Wert von Var:{}. Adresse von Var: {}",Variable, fmt::ptr(&Variable));    
 }
 
+void foo(){fmt::print("Hello from foo!\\n");
+}
+
 int main(int argc, char **argv) {
 
     /**
@@ -78,9 +81,10 @@ int main(int argc, char **argv) {
 
     fmt::println("heapVar Wert:{}. heapVar Adresse:{}.", *heapVar, fmt::ptr(heapVar));
 
-
-
     delete heapVar;
+
+    fmt::print("Adresse von foo: {}\\n", fmt::ptr(&foo));
+
     /*fmt::println("staticglobalVarOhneWert:");
     WertUndAdresseVonVar(abc, &abc);*/
 
