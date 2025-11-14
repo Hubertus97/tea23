@@ -1,6 +1,15 @@
 #include <fmt/chrono.h>
 #include <fmt/format.h>
 
+enum class GarageState{
+    FahreHoch,
+    FahreRunter,
+    StopAufDemWegNachOben,
+    StopAufDemWegNachUnten,
+    GaragenTorOffen,
+    GaragenTorZu,
+};
+
 auto main(int argc, char** argv) -> int
 {
     /**
