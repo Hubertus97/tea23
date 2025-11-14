@@ -10,6 +10,7 @@ enum class GarageState{
     GaragenTorZu,
 };
 
+
 auto main(int argc, char** argv) -> int
 {
     /**
@@ -18,6 +19,13 @@ auto main(int argc, char** argv) -> int
      * More info at https://fmt.dev/latest/api.html
      */
     fmt::print("Hello, {}!\n", argv[0]);
+
+    GarageState CurrentState = GarageState::FahreHoch;
+
+    while (true)
+    {
+        /* code */
+    }
 
 
     return 0; /* exit gracefully*/
