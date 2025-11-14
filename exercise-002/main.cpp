@@ -1,15 +1,12 @@
-#include <fmt/chrono.h>
 #include <fmt/format.h>
+#include "graveyard.h"
 
-#include <fmt/format.h>
-#include <cstdlib>
-#include <cstring>
+int undead = 7;
 
 int main() {
-    char *ghost = (char*)malloc(8);
-    strcpy(ghost, "evil");
-    free(ghost);
-    
+    fmt::println("🪦 Globale Variable sagt: {}", undead);
+    awaken();
+    persistent();
+    persistent();
+    fmt::println("🪦 Globale Variable nach Aufruf: {}", undead);
 }
-
-fmt::println("{}", ghost);
