@@ -40,58 +40,69 @@ auto main(int argc, char** argv) -> int
         switch (CurrentState)
         {
         case GarageState::FahreHoch:
-            fmt::println("Tor fährt hoch");
             if (input == '\n')
             {
                 CurrentState = GarageState::StopAufDemWegNachOben;
+                fmt::println("Stop Auf dem Weg nach oben");
             }
             else if (input == 'o')
             {
                 CurrentState = GarageState::GaragenTorOffen;
+                fmt::println("Garagentor offen");
+            }
+            else
+            {
+                fmt::println("Tor fährt hoch");
             }
             break;
 
         case GarageState::FahreRunter:
-            fmt::println("Tor fährt runter");
             if (input == '\n')
             {
                 CurrentState = GarageState::StopAufDemWegNachUnten;
+                fmt::println("Stop auf dem Weg nach unten");
             }
             else if (input == 'u')
             {
                 CurrentState = GarageState::GaragenTorZu;
+                fmt::println("Garagentor zu");
             }
+            else
+            {
+                fmt::println("Tor fährt runter");
+            }
+            
             break;
 
         case GarageState::GaragenTorOffen:
-            fmt::println("Tor ist offen");
             if (input == '\n')
             {
                 CurrentState = GarageState::FahreRunter;
+                fmt::println("Tor fährt runter");
             }
             break;
 
         case GarageState::GaragenTorZu:
-            fmt::println("Tor ist zu");
             if (input == '\n')
             {
                 CurrentState = GarageState::FahreHoch;
+                fmt::println("Fahre hoch");
             }
             break;
 
         case GarageState::StopAufDemWegNachOben:
-            fmt::println("Stop auf dem Weg nach oben");
             if (input == '\n')
             {
                 CurrentState = GarageState::FahreRunter;
+                fmt::println("Fahre runter");
             }
             break;
 
         case GarageState::StopAufDemWegNachUnten:
-            fmt::println("Stop auf dem Weg nach unten");
             if (input == '\n')
             {
                 CurrentState = GarageState::FahreHoch;
+                fmt::println("Fahre hoch");
             }
             break;
         
