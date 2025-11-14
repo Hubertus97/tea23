@@ -27,7 +27,6 @@ auto main(int argc, char** argv) -> int
     {
         // --- Simulation der Eingabe ---
         // (Wir lesen die Eingaben am Anfang jedes Schleifendurchlaufs)
-        fmt::println("\nAktueller Status: {}", CurrentState); // Zeigt den aktuellen Status
         fmt::println("Drücke Enter für 'Taste', 'o' für 'Oben', 'u' für 'Unten'");
         
         char input = std::cin.get();
