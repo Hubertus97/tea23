@@ -35,7 +35,7 @@ add_custom_command(
 add_custom_target(generate_image_header ALL DEPENDS ${GENERATED_HEADER_PATH})
 
 # add the executable
-add_executable(${PROJECT_NAME} main.cpp ${GENERATED_HEADER_PATH})
+add_executable(${PROJECT_NAME} src/main.cpp ${GENERATED_HEADER_PATH})
 
 
 # Include the generated header in the project
