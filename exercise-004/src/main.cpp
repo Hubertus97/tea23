@@ -4,6 +4,7 @@
 #include "CLI/CLI.hpp"
 #include "config.h"
 #include "image.h"
+#include <opencv2/opencv.hpp>
 
 auto main(int argc, char **argv) -> int
 {
@@ -27,7 +28,16 @@ auto main(int argc, char **argv) -> int
      * it is much more convenient than std::cout and printf
      * More info at https://fmt.dev/latest/api.html
      */
-    fmt::print("Größe des Image Arrays:{}", sizeof(image));
+    fmt::println("Größe des Image Arrays:{}", sizeof(image));
+
+    fmt::print("Erstes Byte: 0x{:02x}\n", image[0]);
+
+    
+    cv::Mat Bild = cv::Mat(image_height, image_width, CV_8UC3, (void*)image);
+
+    fmt::println("Breite des Bilds:{}", Bild.cols);
+    fmt::println("Höhe des Bilds:{}", Bild.rows);
+    fmt::println("Kanäle des Bilds:{}", Bild.channels());
 
     return 0; /* exit gracefully*/
 }
