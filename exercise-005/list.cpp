@@ -72,3 +72,57 @@ int InsertIntoLinkedListAfterNode(List_t* list, ListNode_t* node, ListNode_t* el
     }
     return 0;
 }
+
+int RemoveFromList(List_t* list, ListNode_t* elem) {
+    // 1. Liste leer? -> Fehler
+    if (list -> size == 0)
+    {
+        return 1;
+    }
+    else    // Falls Liste nicht leer
+    {
+        if (elem == list -> pHead)  //Falls elem erster Listen Knoten ist
+        {
+            list -> pHead = elem -> pNext;
+
+            if (elem -> pNext == nullptr)   //Falls elem erster und einziger Knoten ist
+            {
+                list -> pTail = nullptr;
+            }
+
+            list -> size--;
+            FreeListNode(elem);
+            return 0;
+        }
+        else
+        {
+            ListNode_t* currentNode = list -> pHead;
+            while ((currentNode -> pNext != nullptr) && (currentNode -> pNext != elem))
+            {
+                if (currentNode -> pNext == elem)
+                {
+                    currentNode -> pNext = elem -> pNext;
+                    list -> size--;
+                    FreeListNode(elem);
+                    return 0;
+                }
+                else if (currentNode -> pNext == nullptr)
+                {
+                    return 1;
+                }
+                currentNode = currentNode -> pNext;
+            }
+        }
+    }
+    
+    // 2. Ist es der Kopf?
+    //    -> pHead anpassen
+    //    -> War es das letzte Element? Dann pTail anpassen.
+
+    // 3. Ist es weiter hinten?
+    //    -> Vorgänger suchen (Schleife)
+    //    -> Zeiger umbiegen
+    //    -> War es der Schwanz? pTail anpassen.
+
+    // 4. Löschen & Size update
+}
