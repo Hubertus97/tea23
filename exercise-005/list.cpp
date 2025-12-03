@@ -94,35 +94,41 @@ int RemoveFromList(List_t* list, ListNode_t* elem) {
             FreeListNode(elem);
             return 0;
         }
-        else
+        else    //bei jedem anderen Knoten
         {
-            ListNode_t* currentNode = list -> pHead;
-            while ((currentNode -> pNext != nullptr) && (currentNode -> pNext != elem))
+            ListNode_t* previousNode = list -> pHead;
+            while ((previousNode -> pNext != nullptr) && (previousNode -> pNext != elem))
             {
-                if (currentNode -> pNext == elem)
+                previousNode = previousNode -> pNext;
+            }
+
+            if (previousNode -> pNext == elem)
+            {
+                if (list -> pTail == elem)      //Wenn elem der letzte Knoten ist
                 {
-                    currentNode -> pNext = elem -> pNext;
-                    list -> size--;
-                    FreeListNode(elem);
-                    return 0;
+                    list -> pTail = previousNode;
                 }
-                else if (currentNode -> pNext == nullptr)
-                {
-                    return 1;
-                }
-                currentNode = currentNode -> pNext;
+                previousNode -> pNext = elem -> pNext;
+                list -> size--;
+                FreeListNode(elem);
+                return 0;
+            }
+
+            else
+            {
+                return 1;
             }
         }
     }
-    
-    // 2. Ist es der Kopf?
-    //    -> pHead anpassen
-    //    -> War es das letzte Element? Dann pTail anpassen.
+}
 
-    // 3. Ist es weiter hinten?
-    //    -> Vorgänger suchen (Schleife)
-    //    -> Zeiger umbiegen
-    //    -> War es der Schwanz? pTail anpassen.
-
-    // 4. Löschen & Size update
+ListNode_t* GetNext(const List_t* list, ListNode_t* elem){
+    if (elem == nullptr)
+    {
+        return list -> pHead;
+    }
+    else
+    {
+        return elem -> pNext;
+    }
 }
