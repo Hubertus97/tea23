@@ -74,6 +74,11 @@ int InsertIntoLinkedListAfterNode(List_t* list, ListNode_t* node, ListNode_t* el
 }
 
 int RemoveFromList(List_t* list, ListNode_t* elem) {
+    if ((list == nullptr) || (elem == nullptr))
+    {
+        return 1;
+    }
+    
     // 1. Liste leer? -> Fehler
     if (list -> size == 0)
     {
