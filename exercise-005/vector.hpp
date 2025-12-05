@@ -1,3 +1,5 @@
+#include <cstddef>
+
 typedef struct Vector {
     unsigned int* data;
     size_t size;
